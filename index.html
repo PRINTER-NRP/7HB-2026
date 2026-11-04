@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ตรวจสอบเกียรติบัตร | SUT-DIGITECH Youth Leadership Program</title>
+<meta name="description" content="ค้นหาและดาวน์โหลดเกียรติบัตร SUT-DIGITECH Youth Leadership Program ด้วยรหัสนักศึกษา">
+<meta name="theme-color" content="#004AAD">
+<meta property="og:title" content="ตรวจสอบเกียรติบัตร · SUT-DIGITECH Youth Leadership Program">
+<meta property="og:description" content="กรอกรหัสนักศึกษาเพื่อดาวน์โหลดเกียรติบัตรของคุณ">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23004AAD'/%3E%3Ctext x='50' y='64' font-family='Arial,sans-serif' font-size='34' font-weight='bold' fill='white' text-anchor='middle'%3EDGT%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600;700&family=Sarabun:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* ── ธีม Empowering SUT-DIGITECH Youth Leadership Program ──────────────
+   กระดาษกราฟ + งานตัดแปะ (collage) สร้างด้วย CSS/SVG ล้วน
+   ไม่มีการนำภาพจากธีมมาทำพื้นหลังตามที่กำหนด
+   โทนสว่างโทนเดียว ทุกสีประกาศตรง ๆ ไม่พึ่ง default ของเบราว์เซอร์  */
+:root{
+  --blue:#004AAD;
+  --blue-deep:#003A87;
+  --orange:#FA9323;
+  --orange-deep:#E07D12;
+  --blob:#FFA248;
+  --cyan:#00A9D5;
+  --sun:#FADB5E;
+  --blush:#FBC4B4;
+  --sage:#C9D9AE;
+  --hill:#E5F1C3;
+  --grid:#D0E2EC;
+  --paper:#FFFFFF;
+  --ink:#16222F;
+  --body:#44546A;
+  --slate:#7C8A9C;
+  --line:#E3EAF1;
+  --tape:#FCE9A8;
+  --ok:#1C7A50;
+  --warn:#BE4E12;
+  --cell:28px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html,body{height:100%}
+body{
+  margin:0;min-height:100%;
+  color:var(--body);
+  font-family:"Sarabun",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size:var(--cell) var(--cell);
+  position:relative;overflow-x:hidden;
+}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:10px}
+
+/* ── ลายเส้นประดับ ─────────────────────────────────────────── */
+.doodles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.doodles svg{position:absolute;display:block}
+.spark{color:var(--sun)}
+.spark.pink{color:var(--blush)}
+.spark.sage{color:var(--sage)}
+.spark.blue{color:#A9C6EA}
+
+/* ── โครงหน้า ─────────────────────────────────────────────── */
+.page{position:relative;z-index:1;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;
+  padding:clamp(28px,6vh,64px) 20px 0}
+.hero{width:100%;max-width:820px;text-align:center}
+
+.badge-row{display:flex;align-items:center;justify-content:center;gap:14px;
+  margin-bottom:clamp(10px,2vh,18px);flex-wrap:wrap}
+.mark{position:relative;width:76px;height:76px;flex:none}
+.mark__disc{width:76px;height:76px;border-radius:50%;background:var(--blue);
+  display:grid;place-items:center;color:#fff;font-family:"Mali",cursive;
+  font-weight:700;font-size:23px;letter-spacing:.03em;line-height:1}
+.mark__crown{position:absolute;top:-17px;left:50%;transform:translateX(-50%) rotate(-7deg);
+  width:42px;height:28px;color:var(--sun)}
+.sticker{
+  display:inline-block;background:var(--blue);color:#fff;
+  font-family:"Mali",cursive;font-weight:700;
+  font-size:clamp(17px,2.6vw,26px);letter-spacing:.06em;
+  padding:.3em 1em .38em;border-radius:999px;
+  transform:rotate(-2.5deg);
+  box-shadow:0 6px 0 rgba(0,74,173,.22);
+  position:relative;
+}
+.sticker::after{content:"";position:absolute;top:-12px;right:-10px;width:24px;height:24px;
+  background:var(--sun);
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);}
+
+h1{margin:0;font-family:"Mali",cursive;font-weight:700;line-height:1.04;
+  font-size:clamp(42px,9.5vw,96px);letter-spacing:-.01em}
+h1 .o{color:var(--orange)}
+h1 .b{color:var(--blue)}
+.sub{margin:.1em 0 0;font-family:"Mali",cursive;font-weight:600;color:var(--orange);
+  font-size:clamp(23px,5vw,46px);line-height:1.15}
+.sub .youth{color:var(--ink);font-size:.56em;font-weight:500;margin-right:.35em;
+  vertical-align:.45em;letter-spacing:.02em}
+
+/* ── ชิปบอกรุ่น ───────────────────────────────────────────── */
+.gens{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;
+  margin:clamp(12px,2.4vh,20px) 0 0;padding:0;list-style:none}
+.gens li{display:inline-flex;align-items:center;gap:8px;
+  background:var(--paper);border:2px solid var(--line);border-radius:999px;
+  padding:.3em .95em .36em;font-size:14.5px;color:var(--body)}
+.gens b{font-family:"Mali",cursive;font-weight:600;color:var(--blue);font-size:15.5px}
+.gens .pip{width:9px;height:9px;border-radius:50%;background:var(--orange);flex:none}
+.gens li:nth-child(2) .pip{background:var(--cyan)}
+
+/* ── การ์ดค้นหา ───────────────────────────────────────────── */
+.card{
+  position:relative;width:min(560px,100%);
+  margin:clamp(22px,4vh,38px) auto 0;
+  background:var(--paper);border:2px solid var(--blue);
+  border-radius:22px;padding:clamp(20px,3.4vw,28px);
+  box-shadow:7px 8px 0 rgba(0,74,173,.13);
+}
+.card__tape{position:absolute;top:-13px;width:84px;height:26px;background:var(--tape);
+  opacity:.9;border-radius:3px;box-shadow:0 1px 3px rgba(22,34,47,.14)}
+.card__tape.l{left:24px;transform:rotate(-7deg)}
+.card__tape.r{right:24px;transform:rotate(6deg)}
+.card__label{margin:0 0 12px;font-family:"Mali",cursive;font-weight:600;
+  font-size:clamp(16px,2.1vw,19px);color:var(--blue);text-align:center}
+
+.pill{position:relative;display:flex;align-items:center;
+  height:var(--ph,58px);
+  padding:0 calc(var(--ph,58px) * .92) 0 20px;
+  background:var(--paper);border:2.5px solid var(--orange);border-radius:999px;
+  transition:box-shadow .18s ease}
+.pill:focus-within{box-shadow:0 0 0 5px rgba(250,147,35,.2)}
+.pill input{flex:1;min-width:0;width:100%;border:0;background:transparent;
+  font-family:"Mali",cursive;font-weight:500;font-size:clamp(16px,2vw,19px);
+  letter-spacing:.04em;color:var(--ink)}
+.pill input::placeholder{color:#AEBCCB;font-weight:400}
+.pill input:focus{outline:none}
+.go{position:absolute;right:7px;top:50%;transform:translateY(-50%);
+  display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;
+  background:var(--orange);color:#fff;cursor:pointer;
+  transition:background .16s ease,transform .16s ease}
+.go:hover{background:var(--orange-deep)}
+.go:active{transform:translateY(-50%) scale(.93)}
+.go[disabled]{opacity:.55;cursor:default}
+.go svg{width:21px;height:21px}
+
+.hint{margin:12px 0 0;text-align:center;font-size:14px;color:var(--slate)}
+.hint code{font-family:"IBM Plex Mono",monospace;font-size:.95em;
+  background:#EEF4FB;color:var(--blue);padding:.12em .5em;border-radius:6px}
+.msg{display:none;margin:13px 0 0;padding:12px 15px;border-radius:14px;
+  background:#FFF3E8;border:2px dashed var(--orange);color:var(--warn);font-size:14.5px}
+.msg.show{display:block}
+.msg b{display:block;font-family:"Mali",cursive;font-weight:600;color:var(--orange-deep)}
+
+.foot{margin:auto 0 0;padding:34px 20px calc(16px + 15vh);text-align:center;
+  font-size:13.5px;color:var(--slate);position:relative;z-index:1}
+.foot strong{color:var(--ink);font-weight:600}
+
+/* ── เนินเขาด้านล่าง ──────────────────────────────────────── */
+.ground{position:fixed;left:0;right:0;bottom:0;height:19vh;min-height:110px;
+  pointer-events:none;z-index:0}
+.ground svg{width:100%;height:100%;display:block}
+
+/* ── ผลลัพธ์: รูปติดเทป ───────────────────────────────────── */
+.scrim{position:fixed;inset:0;z-index:40;display:none;place-items:center;
+  padding:clamp(12px,3vw,38px);background:rgba(10,30,56,.55);backdrop-filter:blur(3px)}
+.scrim.show{display:grid}
+.sheet{position:relative;width:min(720px,100%);max-height:100%;overflow-y:auto;
+  background:var(--paper);border-radius:20px;padding:26px clamp(18px,3vw,30px) 24px;
+  box-shadow:0 26px 60px -24px rgba(6,20,45,.65);
+  animation:pop .3s cubic-bezier(.2,.9,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) rotate(-1.2deg) scale(.97)}
+               to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}}
+.sheet__tape{position:absolute;top:-14px;width:96px;height:28px;background:var(--tape);
+  opacity:.92;border-radius:3px}
+.sheet__tape.l{left:26px;transform:rotate(-8deg)}
+.sheet__tape.r{right:26px;transform:rotate(7deg)}
+
+.eyebrow{display:flex;align-items:center;gap:8px;font-family:"Mali",cursive;
+  font-weight:600;font-size:14px;color:var(--ok);margin:0}
+.eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--ok)}
+.x{position:absolute;top:18px;right:18px;border:0;background:#EEF2F7;color:var(--slate);
+  width:36px;height:36px;border-radius:50%;font-size:19px;line-height:1;cursor:pointer}
+.x:hover{background:#E1E8F0;color:var(--ink)}
+.who h2{margin:6px 0 0;font-family:"Mali",cursive;font-weight:700;
+  font-size:clamp(21px,3.3vw,30px);line-height:1.25;color:var(--ink);text-wrap:balance}
+.rec{display:flex;flex-wrap:wrap;gap:8px 30px;margin:12px 0 0}
+.rec>div{min-width:0}
+.rec dt{font-family:"Mali",cursive;font-weight:600;font-size:12px;
+  letter-spacing:.08em;color:var(--slate);margin:0}
+.rec dd{margin:0;font-family:"IBM Plex Mono",monospace;font-weight:600;
+  font-size:16px;color:var(--blue);font-variant-numeric:tabular-nums;word-break:break-all}
+.rec dd.plain{font-family:"Sarabun",sans-serif;color:var(--ink);word-break:normal}
+
+.photo{position:relative;margin:22px auto 0;background:var(--paper);
+  padding:11px 11px 13px;border-radius:5px;
+  box-shadow:0 10px 26px -14px rgba(10,30,56,.5);
+  transform:rotate(-1deg);border:1px solid var(--line)}
+.photo::before,.photo::after{content:"";position:absolute;width:72px;height:22px;
+  background:var(--tape);opacity:.85;border-radius:2px}
+.photo::before{top:-10px;left:-12px;transform:rotate(-26deg)}
+.photo::after{bottom:-9px;right:-12px;transform:rotate(-24deg)}
+.photo img{display:block;width:100%;height:auto;border-radius:2px}
+.photo.busy{display:grid;place-items:center;aspect-ratio:1.414;background:#F7F9FC}
+.photo.busy img{display:none}
+
+.acts{display:flex;gap:11px;flex-wrap:wrap;margin-top:22px}
+.btn{flex:1 1 180px;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  height:52px;padding:0 20px;border-radius:999px;border:2px solid transparent;
+  font-family:"Mali",cursive;font-weight:600;font-size:16.5px;cursor:pointer;
+  text-decoration:none;transition:background .16s ease,transform .16s ease}
+.btn--go{background:var(--orange);color:#fff}
+.btn--go:hover{background:var(--orange-deep)}
+.btn--go:active{transform:scale(.985)}
+.btn--ghost{background:var(--paper);border-color:var(--line);color:var(--body);flex:0 1 130px}
+.btn--ghost:hover{border-color:#C8D3DF}
+.save{display:flex;gap:11px;align-items:flex-start;margin-top:16px;padding:13px 15px;
+  border-radius:14px;background:#FFF8E8;border:2px dashed var(--sun);
+  color:#8A6212;font-size:14px;line-height:1.6}
+.save b{display:block;font-family:"Mali",cursive;font-weight:600;color:#7A5410}
+.save svg{width:21px;height:21px;flex:none;margin-top:3px}
+
+.spin{border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (max-width:620px){
+  :root{--cell:22px}
+  .doodles .hide-sm{display:none}
+  .ground{height:14vh;min-height:88px}
+  .mark,.mark__disc{width:60px;height:60px}
+  .mark__disc{font-size:18px}
+  .sheet{padding:24px 16px 20px}
+  .btn{flex:1 1 100%}
+  .btn--ghost{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+
+<div class="doodles" aria-hidden="true">
+  <svg class="hide-sm" style="top:14px;right:1.5%;width:min(330px,27vw)" viewBox="0 0 330 230" fill="none">
+    <path d="M6 222c26-52 54-104 102-140 38-29 92-33 118-6 24 25 10 63-22 68-27 4-44-19-31-39 17-26 64-30 104-14 20 8 37 20 48 33"
+      stroke="#00A9D5" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <svg class="spark hide-sm" style="top:17%;right:13%;width:60px" viewBox="0 0 100 100"><path d="M50 0l11 39 39 11-39 11-11 39-11-39L0 50l39-11z" fill="currentColor"/></svg>
+  <svg class="spark hide-sm" style="top:26%;right:7%;width:34px" viewBox="0 0 100 100"><path d="M50 0l11 39 39 11-39 11-11 39-11-39L0 50l39-11z" fill="currentColor"/></svg>
+  <svg class="spark pink" style="top:4%;left:5%;width:30px" viewBox="0 0 100 100"><path d="M50 0l11 39 39 11-39 11-11 39-11-39L0 50l39-11z" fill="currentColor"/></svg>
+  <svg class="spark sage hide-sm" style="top:11%;left:13%;width:22px" viewBox="0 0 100 100"><path d="M50 0l11 39 39 11-39 11-11 39-11-39L0 50l39-11z" fill="currentColor"/></svg>
+  <svg class="spark blue hide-sm" style="top:20%;left:7%;width:18px" viewBox="0 0 100 100"><path d="M50 0l11 39 39 11-39 11-11 39-11-39L0 50l39-11z" fill="currentColor"/></svg>
+  <svg class="spark pink hide-sm" style="top:30%;left:16%;width:15px" viewBox="0 0 100 100"><path d="M50 0l11 39 39 11-39 11-11 39-11-39L0 50l39-11z" fill="currentColor"/></svg>
+  <svg class="spark sage hide-sm" style="top:40%;left:4%;width:24px" viewBox="0 0 100 100"><path d="M50 0l11 39 39 11-39 11-11 39-11-39L0 50l39-11z" fill="currentColor"/></svg>
+  <svg class="spark hide-sm" style="top:47%;right:5%;width:20px" viewBox="0 0 100 100"><path d="M50 0l11 39 39 11-39 11-11 39-11-39L0 50l39-11z" fill="currentColor"/></svg>
+</div>
+
+<div class="ground" aria-hidden="true">
+  <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
+    <path d="M0 96c180-34 340 10 520 24 200 16 360-30 540-28 160 2 290 28 380 22v106H0z" fill="#E5F1C3"/>
+    <path d="M0 150C70 104 112 70 118 28c2-16 26-20 34-4 18 36 24 84 10 126-6 20-20 44-42 70H0z" fill="#FFA248"/>
+    <path d="M44 214c14-52 26-92 52-128" stroke="#FFD2A3" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M70 216c18-44 34-74 58-100" stroke="#FFE2C6" stroke-width="5" stroke-linecap="round" fill="none"/>
+  </svg>
+</div>
+
+<div class="page">
+  <main class="hero">
+    <div class="badge-row">
+      <span class="mark">
+        <svg class="mark__crown" viewBox="0 0 60 40" fill="currentColor" aria-hidden="true">
+          <path d="M4 36 1 9l16 11L30 2l13 18L59 9l-3 27z" stroke="#E8B93A" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span class="mark__disc">DGT</span>
+      </span>
+      <span class="sticker">EMPOWERING</span>
+    </div>
+
+    <h1><span class="o">SUT</span><span class="b">-DIGITECH</span></h1>
+    <p class="sub"><span class="youth">Youth</span>Leadership Program</p>
+
+    <ul class="gens">
+      <li><span class="pip"></span><b>รุ่นที่ 1</b> 22–23 ส.ค. 2026</li>
+      <li><span class="pip"></span><b>รุ่นที่ 2</b> 29–30 ส.ค. 2026</li>
+    </ul>
+
+    <section class="card">
+      <span class="card__tape l"></span><span class="card__tape r"></span>
+      <p class="card__label">ตรวจสอบเกียรติบัตรของคุณ</p>
+      <form class="pill" id="form1" autocomplete="off">
+        <input id="q1" type="text" inputmode="text" maxlength="20" placeholder="กรอกรหัสนักศึกษา" aria-label="รหัสนักศึกษา" spellcheck="false" autocapitalize="characters">
+        <button class="go" type="submit" id="btn1" aria-label="ค้นหา">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/></svg>
+        </button>
+      </form>
+      <p class="hint">พิมพ์รหัสนักศึกษาแล้วกด Enter · ตัวอย่าง <code>B6602291</code></p>
+      <div class="msg" id="err1" role="alert"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>เกียรติบัตรกิจกรรม <strong>SUT&ndash;DIGITECH Youth Leadership Program</strong><br>
+    จำนวน <strong id="total">&mdash;</strong> ใบ · สถาบันดิจิทัลอาร์ตและวิทยาศาสตร์ มหาวิทยาลัยเทคโนโลยีสุรนารี</p>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-labelledby="rname">
+  <div class="sheet">
+    <span class="sheet__tape l"></span><span class="sheet__tape r"></span>
+    <button class="x" id="close" aria-label="ปิด">&times;</button>
+    <p class="eyebrow"><span class="dot"></span><span id="eyebrowtxt">พบเกียรติบัตรแล้ว</span></p>
+    <div class="who">
+      <h2 id="rname"></h2>
+      <dl class="rec">
+        <div><dt>รหัสนักศึกษา</dt><dd id="rsid"></dd></div>
+        <div><dt>รุ่น</dt><dd class="plain" id="rgen"></dd></div>
+        <div><dt>CERTIFICATE ID</dt><dd id="rcid"></dd></div>
+      </dl>
+    </div>
+    <figure class="photo busy" id="photo">
+      <span class="spin" id="phspin" style="width:34px;height:34px;border:3.5px solid #DCE5EF;border-top-color:var(--orange)"></span>
+      <img id="rimg" alt="">
+    </figure>
+    <div class="save" id="pending" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5M12 16h.01"/></svg>
+      <div><b>ยังไม่มีไฟล์เกียรติบัตรของคุณ</b>ชื่อของคุณอยู่ในรายชื่อผู้มีสิทธิ์แล้ว แต่ไฟล์ยังอยู่ระหว่างจัดทำ ติดต่อผู้จัดกิจกรรมได้เลย</div>
+    </div>
+    <div class="save" id="tiphold" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>
+      <div><b>บันทึกบนมือถือ</b>ถ้ากดปุ่มแล้วไฟล์ไม่ถูกบันทึก ให้แตะรูปเกียรติบัตรค้างไว้ แล้วเลือก &ldquo;บันทึกรูปภาพ&rdquo;</div>
+    </div>
+    <div class="acts">
+      <a class="btn btn--go" id="dl" download href="#" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+        บันทึกเกียรติบัตร
+      </a>
+      <button class="btn btn--ghost" id="close2">ปิด</button>
+    </div>
+  </div>
+</div>
+
+<p class="sr" id="live" aria-live="polite"></p>
+
+<script>
+(function(){
+  "use strict";
+
+  var DATA=[], index=Object.create(null), ready=false;
+
+  var scrim=document.getElementById("scrim"), live=document.getElementById("live"),
+      dl=document.getElementById("dl"), pending=document.getElementById("pending"),
+      tiphold=document.getElementById("tiphold"), photo=document.getElementById("photo"),
+      img=document.getElementById("rimg"), err=document.getElementById("err1"),
+      form=document.getElementById("form1"), input=document.getElementById("q1"),
+      btn=document.getElementById("btn1"), lastFocus=null, seq=0;
+
+  function esc(s){ return String(s).replace(/[<>&"]/g,function(c){
+    return {"<":"&lt;",">":"&gt;","&":"&amp;","\"":"&quot;"}[c]; }); }
+  function norm(v){ return String(v||"").toUpperCase().replace(/[\s\-_.]/g,""); }
+  function showErr(html){ err.innerHTML=html; err.classList.add("show"); }
+
+  /* ── โหลดรายชื่อ ──────────────────────────────────────── */
+  fetch("data.json",{cache:"no-cache"})
+    .then(function(res){ if(!res.ok) throw new Error(res.status); return res.json(); })
+    .then(function(rows){
+      DATA=rows; ready=true;
+      rows.forEach(function(r){ index[norm(r.i)]=r; });
+      document.getElementById("total").textContent=rows.length.toLocaleString("th-TH");
+    })
+    .catch(function(){
+      showErr("<b>โหลดรายชื่อไม่สำเร็จ</b>ลองรีเฟรชหน้าอีกครั้ง หรือเช็กการเชื่อมต่ออินเทอร์เน็ต");
+    });
+
+  function lookup(raw){
+    var k=norm(raw); if(!k) return null;
+    if(index[k]) return index[k];
+    if(/^\d+$/.test(k)){
+      if(index["B"+k]) return index["B"+k];
+      if(index["B6"+k]) return index["B6"+k];
+    }
+    if(k.charAt(0)==="B" && index["B6"+k.slice(1)]) return index["B6"+k.slice(1)];
+    return null;
+  }
+
+  /* ── โหลดรูป: ลองนามสกุลไปทีละแบบ ─────────────────────── */
+  function loadCert(r, token){
+    var exts=[".jpg",".png",".jpeg",".JPG",".PNG"], k=0;
+    photo.classList.add("busy"); photo.hidden=false;
+    img.removeAttribute("src"); img.alt="เกียรติบัตรของ "+r.n;
+    dl.hidden=true; pending.hidden=true; tiphold.hidden=true;
+
+    function fail(){
+      if(token!==seq) return;
+      photo.hidden=true; dl.hidden=true; pending.hidden=false;
+      document.getElementById("eyebrowtxt").textContent="อยู่ในรายชื่อผู้มีสิทธิ์";
+    }
+    function attempt(){
+      if(token!==seq) return;
+      if(k>=exts.length) return fail();
+      var ext=exts[k++], url="certs/"+encodeURIComponent(r.i)+ext;
+      img.onload=function(){
+        if(token!==seq) return;
+        photo.classList.remove("busy");
+        dl.href=url;
+        dl.setAttribute("download","Certificate_YouthLeadership_"+r.i+ext.toLowerCase());
+        dl.hidden=false; tiphold.hidden=false;
+      };
+      img.onerror=attempt;
+      img.src=url;
+    }
+    attempt();
+  }
+
+  function open(r){
+    seq++;
+    lastFocus=document.activeElement;
+    document.getElementById("rname").textContent=r.n;
+    document.getElementById("rsid").textContent=r.i;
+    document.getElementById("rgen").textContent="รุ่นที่ "+r.g+(r.g===1?" · 22–23 ส.ค. 2026":" · 29–30 ส.ค. 2026");
+    document.getElementById("rcid").textContent="DGT-YTLDP2026-"+r.c;
+    document.getElementById("eyebrowtxt").textContent="พบเกียรติบัตรแล้ว";
+    if(r.p){
+      photo.hidden=true; dl.hidden=true; tiphold.hidden=true; pending.hidden=false;
+      document.getElementById("eyebrowtxt").textContent="อยู่ในรายชื่อผู้มีสิทธิ์";
+    }else{
+      loadCert(r, seq);
+    }
+    scrim.classList.add("show"); document.body.style.overflow="hidden";
+    live.textContent="พบเกียรติบัตรของ "+r.n;
+    document.getElementById("close").focus();
+  }
+  function close(){
+    seq++;
+    scrim.classList.remove("show"); document.body.style.overflow="";
+    img.removeAttribute("src");
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  document.getElementById("close").addEventListener("click",close);
+  document.getElementById("close2").addEventListener("click",close);
+  scrim.addEventListener("click",function(e){ if(e.target===scrim) close(); });
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"&&scrim.classList.contains("show")) close(); });
+
+  input.addEventListener("input",function(){ err.classList.remove("show"); });
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    err.classList.remove("show");
+    if(!norm(input.value)){
+      showErr("<b>ยังไม่ได้กรอกรหัส</b>พิมพ์รหัสนักศึกษาของคุณลงในช่องด้านบนก่อนนะ");
+      input.focus(); return;
+    }
+    if(!ready){
+      showErr("<b>กำลังโหลดรายชื่อ</b>รอสักครู่แล้วกดค้นหาอีกครั้ง");
+      return;
+    }
+    btn.disabled=true;
+    var label=btn.innerHTML;
+    btn.innerHTML='<span class="spin" style="width:19px;height:19px;border:2.5px solid rgba(255,255,255,.45);border-top-color:#fff"></span>';
+    setTimeout(function(){
+      btn.disabled=false; btn.innerHTML=label;
+      var r=lookup(input.value);
+      if(r){ open(r); }
+      else{
+        showErr("<b>ไม่พบรหัส "+esc(norm(input.value))+"</b>"+
+          "ลองเช็กว่าพิมพ์ครบทุกหลักไหม ถ้ายังไม่เจอ แปลว่ารหัสนี้ยังไม่มีในรายชื่อผู้รับเกียรติบัตร — ติดต่อผู้จัดกิจกรรมได้เลย");
+        live.textContent="ไม่พบรหัสนักศึกษานี้";
+      }
+    },300);
+  });
+})();
+</script>
+</body>
+</html>
